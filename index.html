@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MADE IN COLOMBIA | House of Experiences</title>
+    
+    <!-- Fuentes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --color-bone: #F9F8F6;
+            --color-gold: #d4af37;
+            --color-dark: #1a1a1a;
+            --color-text: #475569;
+        }
+
+        body {
+            background-color: var(--color-bone);
+            font-family: 'Ubuntu', sans-serif;
+            color: var(--color-text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        h1, h2, h3, h4, .garamond {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Contenedor de imagen */
+        .img-container {
+            position: relative;
+            background-color: transparent;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Barra de progreso superior */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--color-gold);
+            z-index: 1000;
+            width: 0%;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 8rem;
+            line-height: 1;
+            color: rgba(212, 175, 55, 0.08);
+            position: absolute;
+            top: -2rem;
+            left: -1rem;
+            z-index: 0;
+        }
+
+        .section-logo {
+            height: 35px;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            display: block;
+        }
+
+        .hero-logo {
+            height: 60px;
+            margin-bottom: 3rem;
+            opacity: 1;
+        }
+
+        /* Espaciado de secciones */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 6rem 1.5rem;
+            position: relative;
+            border-bottom: 1px solid rgba(0,0,0,0.03);
+        }
+
+        /* Tabla de inversión */
+        .investment-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+        .investment-table th {
+            text-align: left;
+            padding: 0.75rem;
+            border-bottom: 2px solid var(--color-gold);
+            font-family: 'Cormorant Garamond', serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-dark);
+        }
+        .investment-table td {
+            padding: 0.75rem;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .investment-table tr:last-child td {
+            border-bottom: 2px solid var(--color-dark);
+            font-weight: 700;
+            color: var(--color-dark);
+        }
+
+        /* CONFIGURACIÓN PARA IMPRESIÓN / PDF */
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+            
+            body {
+                background-color: white !important;
+                color: black !important;
+            }
+
+            #scroll-progress, nav {
+                display: none !important;
+            }
+
+            section {
+                min-height: 100vh;
+                height: 100vh;
+                page-break-after: always !important;
+                break-after: page !important;
+                display: flex !important;
+                align-items: center !important;
+                padding: 4rem !important;
+                border: none !important;
+            }
+
+            .img-container {
+                max-height: 400px;
+            }
+
+            .section-number {
+                display: none; /* Evita que el número gigante se vea mal en papel */
+            }
+
+            .investment-table {
+                font-size: 0.75rem; /* Ajuste para que la tabla quepa en una sola hoja */
+            }
+        }
+
+        * {
+            transition: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <!-- Navegación lateral -->
+    <nav class="fixed right-8 top-1/2 -translate-y-1/2 z-50 flex flex-col space-y-4 hidden md:flex text-gold">
+        <a href="#inicio" title="Inicio" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#contexto" title="Contexto" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#ubicacion" title="Ubicación" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#objetivos" title="Objetivos" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#tostao" title="Tostao" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#hatsu" title="Hatsu" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#lok" title="Lök" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#inversion" title="Inversión" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+        <a href="#negocio" title="Negocio" class="w-2 h-2 rounded-full bg-gold/30 hover:bg-gold"></a>
+    </nav>
+
+    <!-- Sección 1: Portada -->
+    <section id="inicio" class="bg-bone">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="hero-logo">
+                <span class="inline-block text-sm uppercase tracking-[0.4em] text-[#d4af37] mb-6 font-bold">Creating Legacy Experiences</span>
+                <h1 class="text-7xl lg:text-9xl font-light text-slate-900 leading-none mb-8 uppercase tracking-tighter">MADE IN<br><span class="italic garamond capitalize">Colombia</span></h1>
+                <p class="text-xl lg:text-2xl text-slate-500 garamond italic max-w-lg mb-10">
+                    House of Experiences: La plataforma estratégica definitiva para la entrada en el mercado asiático.
+                </p>
+                <div class="flex items-center space-x-8 text-xs font-black tracking-widest text-slate-800 border-t border-gold/30 pt-8">
+                    <span>TOSTAO</span>
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                    <span>HATSU</span>
+                    <span class="w-1.5 h-1.5 bg-gold rounded-full"></span>
+                    <span>LÖK</span>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="img-container shadow-2xl">
+                    <img src="https://imagenes.elpais.com/resizer/v2/PO7ERGE7F3KLH4UCNHLAUCHIN4.jpg?auth=85e69058752b02739a84333ee7c0b1317c79ed45218320aa2eef966d20bea71e&width=1960&height=1470&smart=true" alt="Vista panorámica de Seúl">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-white p-6 shadow-lg max-w-xs border-l-4 border-gold">
+                    <p class="text-xs uppercase tracking-widest font-bold mb-1">Localización</p>
+                    <p class="text-sm italic garamond">Circolo House, Seúl, Corea. El epicentro del consumo premium en Asia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 2: Contexto -->
+    <section id="contexto" class="bg-white">
+        <div class="max-w-7xl mx-auto relative w-full">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
+            <span class="section-number">01</span>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <div class="lg:col-span-6">
+                    <span class="text-xs uppercase tracking-widest gold-accent font-bold mb-4 block">Contexto de Mercado</span>
+                    <h2 class="text-5xl lg:text-6xl mb-8 leading-tight">Corea del Sur: Un Entorno Sofisticado</h2>
+                    <p class="text-lg text-slate-500 mb-10 leading-relaxed">
+                        Corea del Sur es uno de los mercados más avanzados de Asia en consumo premium, experiencia de marca y adopción de nuevas categorías. Con 51 millones de personas y más del 80% en zonas urbanas, Seúl concentra la influencia cultural y tendencias.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-bone border-l-2 border-gold">
+                            <h4 class="font-bold text-dark text-sm uppercase mb-2">Potencia Cafetera</h4>
+                            <p class="text-sm">Más del 75% consume café regularmente (40M de consumidores). Promedio de 350 tazas por persona al año.</p>
+                        </div>
+                        <div class="p-6 bg-bone border-l-2 border-gold">
+                            <h4 class="font-bold text-dark text-sm uppercase mb-2">Categorías Complementarias</h4>
+                            <p class="text-sm">Crecimiento de doble dígito en bebidas funcionales, RTD tea y chocolate premium de origen.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-6 space-y-12">
+                    <div class="grid grid-cols-1 gap-12">
+                        <div>
+                            <h3 class="text-4xl mb-4 italic garamond">Perspectiva Estratégica</h3>
+                            <ul class="text-base space-y-3">
+                                <li class="border-b border-gold/10 pb-2">• Mercado de referencia en Asia (Estética y Experiencia).</li>
+                                <li class="border-b border-gold/10 pb-2">• Credibilidad ganada en Seúl abre puertas en Japón y Singapur.</li>
+                                <li class="border-b border-gold/10 pb-2">• Consumidor con alto criterio: Valida producto y narrativa.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-4xl mb-4 italic garamond">Patrones de Consumo</h3>
+                            <ul class="text-base space-y-3">
+                                <li class="border-b border-gold/10 pb-2">• Alta valoración por el diseño y la coherencia de marca.</li>
+                                <li class="border-b border-gold/10 pb-2">• Disposición a probar marcas con ejecución sólida.</li>
+                                <li class="border-b border-gold/10 pb-2">• Capacidad masiva de amplificación vía redes sociales.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Ubicación -->
+    <section id="ubicacion" class="bg-bone">
+        <div class="max-w-7xl mx-auto relative w-full">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
+            <span class="section-number">02</span>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <span class="text-xs uppercase tracking-widest gold-accent font-bold mb-4 block">Ubicación Estratégica</span>
+                    <h2 class="text-5xl lg:text-6xl mb-8">Samseong-dong, Gangnam</h2>
+                    <p class="text-lg text-slate-500 mb-8">
+                        El proyecto se desarrolla en el distrito corporativo más relevante de Seúl. Gangnam concentra aproximadamente el 10% del PIB de la ciudad.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="font-bold text-dark text-xs uppercase mb-2">Nodo COEX</h4>
+                            <p class="text-sm opacity-70">40 millones de visitantes al año. Más de 1,000 espacios comerciales y centro de convenciones internacional.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-dark text-xs uppercase mb-2">Entorno Ejecutivo</h4>
+                            <p class="text-sm opacity-70">Hoteles Grand InterContinental, Park Hyatt y Oakwood atraen flujo constante de perfiles corporativos.</p>
+                        </div>
+                    </div>
+                    <p class="text-sm italic border-t border-gold/20 pt-4">Perfil: Profesionales entre 25-45 años, poder adquisitivo alto y visitantes internacionales.</p>
+                </div>
+                <div class="p-12 bg-white/50 border border-gold/10 rounded-sm">
+                   <h3 class="text-4xl garamond italic mb-6">Tránsito y Visibilidad</h3>
+                   <p class="text-lg text-slate-500 leading-relaxed">Se estima un tránsito diario de cientos de miles de personas en el área inmediata de COEX. La concentración de profesionales de alto perfil convierte esta ubicación en un punto de validación definitivo para las marcas colombianas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 4: Objetivos -->
+    <section id="objetivos" class="bg-white">
+        <div class="max-w-5xl mx-auto text-center w-full">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo mx-auto">
+            <span class="text-xs uppercase tracking-[0.4em] gold-accent font-bold mb-6 block">Strategic Objective</span>
+            <h2 class="text-5xl lg:text-7xl mb-12 italic garamond">Plataforma de Entrada al Mercado Asiático</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-left mb-16">
+                <div class="p-8 bg-bone">
+                    <h3 class="text-2xl mb-4 italic garamond">Oportunidad Real</h3>
+                    <p class="text-sm text-slate-500">No es una activación tradicional. Es un espacio de posicionamiento, validación y contacto con partners potenciales. El foco es generar visibilidad y activar expansión estratégica.</p>
+                </div>
+                <div class="p-8 bg-bone">
+                    <h3 class="text-2xl mb-4 italic garamond">Enfoque Integrado</h3>
+                    <p class="text-sm text-slate-500">Una narrativa conjunta desde Colombia hacia Asia operando en tres niveles: Experiencia directa, generación de contenido y activación de relaciones corporativas.</p>
+                </div>
+            </div>
+            <ul class="grid grid-cols-1 md:grid-cols-3 gap-8 text-xs font-bold tracking-widest uppercase text-slate-400">
+                <li class="border border-gold/20 py-4">Validar Producto</li>
+                <li class="border border-gold/20 py-4">Generar Interacción</li>
+                <li class="border border-gold/20 py-4">Abrir Canales</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Sección 5: Tostao -->
+    <section id="tostao" class="bg-white">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="img-container shadow-lg">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828523b05df946ec4fda_image_2.webp" alt="Tostao Coffee Experience Seúl">
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
+                <span class="text-xs gold-accent font-bold uppercase tracking-widest mb-4 block">Experiencia de Marca</span>
+                <h3 class="text-6xl mb-8 uppercase tracking-widest leading-none">TOSTAO<br><span class="italic garamond capitalize text-slate-500 font-light">Coffee Experience</span></h3>
+                <div class="space-y-6">
+                    <p class="text-lg italic garamond">"Tostao funciona como el punto de entrada al recorrido. El café permite una conexión inmediata con el visitante."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Estructura</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Mesa central de degustación</li>
+                                <li>• Paredes con costales de café</li>
+                                <li>• Instalaciones con grano visible</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Interacción</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Cata rápida (5-10 min)</li>
+                                <li>• Explicación por baristas</li>
+                                <li>• Selección rápida por visitante</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 6: Hatsu -->
+    <section id="hatsu" class="bg-bone">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div>
+                <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
+                <span class="text-xs gold-accent font-bold uppercase tracking-widest mb-4 block">Experiencia de Marca</span>
+                <h3 class="text-6xl mb-8 uppercase tracking-widest leading-none">HATSU<br><span class="italic garamond capitalize text-gold font-light">Functional Beverage</span></h3>
+                <div class="space-y-6">
+                    <p class="text-lg italic garamond">"Flow State Drink the Balance: Un espacio donde el equilibrio se comunica a través del movimiento y el color."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Estructura Core</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Sistema de tubos con líquidos</li>
+                                <li>• Colores inspirados en bebidas</li>
+                                <li>• Iluminación integrada</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Interaction Bar</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Degustación: Tea, Water, Soda</li>
+                                <li>• Product Wall por categorías</li>
+                                <li>• Selección por preferencia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="img-container shadow-lg">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e78281563d00c2ceb29623_image_1.webp" alt="Hatsu Flow State Séoul">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 7: Lök -->
+    <section id="lok" class="bg-white">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="order-2 lg:order-1">
+                <div class="img-container shadow-lg">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828b79e429511b4ca782_image_3.webp" alt="Lök Sensory Chocolate Séoul">
+                </div>
+            </div>
+            <div class="order-1 lg:order-2">
+                <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
+                <span class="text-xs gold-accent font-bold uppercase tracking-widest mb-4 block">Experiencia de Marca</span>
+                <h3 class="text-6xl mb-8 uppercase tracking-widest leading-none">LÖK<br><span class="italic garamond capitalize text-slate-500 font-light">Chocolate Experience</span></h3>
+                <div class="space-y-6">
+                    <p class="text-lg italic garamond">"Lök construye el momento sensorial y memorable. Es donde la experiencia se vuelve emocional."</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Estructura</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Fuente de chocolate central</li>
+                                <li>• Mesas de degustación guiada</li>
+                                <li>• Elementos de cacao natural</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xs uppercase mb-2">Interacción</h4>
+                            <ul class="text-xs space-y-2 opacity-70">
+                                <li>• Lectura de porcentajes</li>
+                                <li>• Exploración sensorial</li>
+                                <li>• Construcción de conexión</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 8: Inversión -->
+    <section id="inversion" class="bg-bone">
+        <div class="max-w-6xl mx-auto w-full">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo mx-auto">
+            <span class="text-xs uppercase tracking-[0.4em] gold-accent font-bold mb-6 block text-center">Investment Overview</span>
+            <h2 class="text-5xl lg:text-6xl mb-12 text-center garamond italic">Inversión Estimada</h2>
+            
+            <div class="overflow-x-auto bg-white p-6 shadow-xl">
+                <table class="investment-table">
+                    <thead>
+                        <tr>
+                            <th>Categoría</th>
+                            <th>Alcance Incluido</th>
+                            <th style="text-align: right;">Rango Estimado (USD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Venue & Permisos</strong></td>
+                            <td class="opacity-70 italic text-xs">Renta espacio premium, utilidades, seguros y adecuaciones base.</td>
+                            <td style="text-align: right;">125k - 207k</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diseño & Dirección</strong></td>
+                            <td class="opacity-70 italic text-xs">Concepto, narrativa y diseño de experiencias.</td>
+                            <td style="text-align: right;">35k - 55k</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Construcción</strong></td>
+                            <td class="opacity-70 italic text-xs">Montaje completo, carpintería y branding físico.</td>
+                            <td style="text-align: right;">145k - 220k</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Producción Técnica</strong></td>
+                            <td class="opacity-70 italic text-xs">Iluminación y sistemas integrados.</td>
+                            <td style="text-align: right;">80k - 140k</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Logística & Op.</strong></td>
+                            <td class="opacity-70 italic text-xs">Envío internacional, aduanas, staff y supervisión.</td>
+                            <td style="text-align: right;">206k - 362k</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gestión Circolo</strong></td>
+                            <td class="opacity-70 italic text-xs">Project management y supervisión internacional.</td>
+                            <td style="text-align: right;">45k - 70k</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="text-align: right; text-transform: uppercase; font-family: 'Cormorant Garamond'; letter-spacing: 2px; font-weight: 700;">Inversión Integral Estimada</td>
+                            <td style="text-align: right; font-weight: 700;">698k - 1,165k</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 9: Negocio -->
+    <section id="negocio" class="bg-[#1a1a1a] text-white">
+        <div class="max-w-7xl mx-auto w-full">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo invert grayscale brightness-200">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <span class="text-xs uppercase tracking-widest gold-accent font-bold mb-6 block">Business Activation Model</span>
+                    <h2 class="text-6xl mb-12 garamond italic leading-tight">Negocio Real.</h2>
+                    <p class="text-slate-400 text-lg mb-16 leading-relaxed">
+                        Este proyecto trasciende la activación B2C. Es una plataforma B2B diseñada para abrir conversaciones directas con operadores de Asia.
+                    </p>
+                    <div class="space-y-10">
+                        <div class="flex gap-8 group">
+                            <div class="w-12 h-12 border border-gold rounded-full flex items-center justify-center shrink-0">
+                                <span class="text-gold font-bold">01</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl mb-2 garamond">Networking Estratégico</h4>
+                                <p class="text-sm text-slate-400">Eventos privados con invitados corporativos e importadores regionales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-16 border border-gold/20 bg-white/5 rounded-sm flex flex-col justify-center">
+                    <h3 class="text-4xl garamond italic mb-8 gold-accent">Perfil de Visitantes</h3>
+                    <ul class="grid grid-cols-1 gap-4 text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+                        <li>• Distribuidores / Importadores</li>
+                        <li>• Retailers / Operadores</li>
+                        <li>• Inversores Internacionales</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 10: Conclusión -->
+    <footer class="py-32 px-6 text-center bg-bone border-t border-black/5">
+        <div class="max-w-4xl mx-auto">
+            <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="h-16 mx-auto mb-12 grayscale opacity-80">
+            <h2 class="text-5xl lg:text-7xl mb-6 italic garamond">Curated by Circolo.</h2>
+            <p class="text-xl text-slate-400 mb-16 italic garamond leading-relaxed">
+                Made in Colombia: House of Experiences no es una activación puntual. Es un punto de partida para Asia.
+            </p>
+            <div class="text-[9px] uppercase tracking-widest text-slate-300">Rev. 01CC1CIRCOLO24 Émirat de RAK</div>
+        </div>
+    </footer>
+
+    <script>
+        window.onscroll = function() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+        };
+    </script>
+
+</body>
+</html>
