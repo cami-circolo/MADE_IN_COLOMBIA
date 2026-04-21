@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MADE IN COLOMBIA | House of Experiences</title>
     
-    <!-- Única fuente permitida: Ubuntu con pesos ligeros -->
+    <!-- Fuente Ubuntu: Única permitida para Circolo -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             --color-text: #333333;
         }
 
-        /* Reset general a Ubuntu y eliminación de cursivas */
+        /* Reset general */
         * {
             box-sizing: border-box;
             font-family: 'Ubuntu', sans-serif !important;
@@ -32,38 +32,37 @@
             background-color: var(--color-bone);
             color: var(--color-text);
             overflow-x: hidden;
-            line-height: 1.5;
+            line-height: 1.4;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
 
-        /* Estilización de Títulos: Ligeros y sofisticados */
         h1 {
             font-weight: 300;
-            letter-spacing: 0.12em;
+            letter-spacing: 0.15em;
             color: var(--color-dark);
             text-transform: uppercase;
         }
 
         h2 {
             font-weight: 400;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
             color: var(--color-dark);
             text-transform: uppercase;
         }
 
         h3, h4 {
             font-weight: 500;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
         }
 
-        /* Contenedores de Imagen */
         .img-container {
             position: relative;
             overflow: hidden;
             aspect-ratio: 16 / 9;
             width: 100%;
+            border-radius: 2px;
         }
 
         .img-container img {
@@ -73,30 +72,29 @@
         }
 
         .section-logo {
-            height: 30px;
-            margin-bottom: 2rem;
+            height: 28px;
+            margin-bottom: 1.5rem;
             opacity: 0.6;
             display: block;
         }
 
         .hero-logo {
-            height: 110px;
-            margin-bottom: 4rem;
+            height: 90px;
+            margin-bottom: 3rem;
             opacity: 1;
         }
 
-        /* Estructura de "Página" */
+        /* Estructura de Secciones */
         section {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 5rem 10%;
+            padding: 3rem 10%;
             position: relative;
-            border-bottom: 1px solid rgba(0,0,0,0.03);
         }
 
         .rev-stamp {
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 1px;
             color: #999;
             text-transform: uppercase;
@@ -106,17 +104,17 @@
         .investment-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
         .investment-table th {
             text-align: left;
-            padding: 1.2rem;
+            padding: 1rem;
             border-bottom: 1px solid var(--color-gold);
             font-weight: 500;
             color: var(--color-dark);
         }
         .investment-table td {
-            padding: 1rem 1.2rem;
+            padding: 0.7rem 1rem;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             font-weight: 300;
         }
@@ -124,13 +122,13 @@
             border-top: 1px solid var(--color-dark);
             border-bottom: 2px solid var(--color-dark);
             font-weight: 500 !important;
-            background: rgba(0,0,0,0.02);
+            background: rgba(0,0,0,0.01);
         }
 
-        /* SKILL: A4 / CARTA PRINT OPTIMIZATION */
+        /* SKILL: A4 LANDSCAPE PDF EXPORT OPTIMIZATION */
         @media print {
             @page {
-                size: A4;
+                size: A4 landscape;
                 margin: 0;
             }
             body { 
@@ -141,19 +139,25 @@
                 min-height: 100vh;
                 page-break-after: always !important;
                 break-after: page !important;
-                padding: 3rem 10% !important;
-                border: none !important;
+                padding: 2.5rem 8% !important;
                 display: flex !important;
                 flex-direction: column !important;
                 justify-content: center !important;
+                border: none !important;
             }
-            .no-print { display: none !important; }
+            .no-print, #scroll-progress, nav { display: none !important; }
             .img-container {
-                max-height: 380px;
+                max-height: 300px;
             }
             .investment-table {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
+            .section-logo {
+                margin-bottom: 1rem;
+            }
+            h1 { font-size: 2.5rem !important; }
+            h2 { font-size: 1.6rem !important; }
+            .rev-stamp { margin-top: 1rem; }
         }
     </style>
 </head>
@@ -161,42 +165,42 @@
 
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gold z-[1000] no-print" style="width: 0%;"></div>
 
-    <!-- Sección 1: Portada -->
+    <!-- PÁGINA 1: Portada -->
     <section id="inicio" class="bg-bone">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="hero-logo">
-            <span class="block text-xs uppercase tracking-[0.5em] text-[#d4af37] mb-8 font-medium">Creating Legacy Experiences</span>
+            <span class="block text-[10px] uppercase tracking-[0.5em] text-[#d4af37] mb-6 font-medium">Creating Legacy Experiences</span>
             
-            <h1 class="text-4xl md:text-6xl leading-tight mb-4">MADE IN COLOMBIA:<br>HOUSE OF EXPERIENCES</h1>
-            <h2 class="text-lg md:text-xl font-light tracking-[0.4em] text-slate-400 mb-12">TOSTAO - HATSU - LÖK</h2>
+            <h1 class="text-4xl md:text-5xl leading-tight mb-4">MADE IN COLOMBIA:<br>HOUSE OF EXPERIENCES</h1>
+            <h2 class="text-base md:text-lg font-light tracking-[0.4em] text-slate-400 mb-10 uppercase">TOSTAO - HATSU - LÖK</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-end">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-end">
                 <div class="border-l border-gold pl-10">
-                    <p class="text-sm font-medium tracking-widest uppercase mb-1">Strategic Market Entry Platform</p>
-                    <p class="text-sm font-light opacity-60 uppercase tracking-widest">Circolo House, Seúl, Corea</p>
-                    <p class="rev-stamp mt-12">Rev. 01CC1CIRCOLO24 Emirate of RAK</p>
+                    <p class="text-[11px] font-medium tracking-widest uppercase mb-1">Strategic Market Entry Platform</p>
+                    <p class="text-[11px] font-light opacity-60 uppercase tracking-widest">Circolo House, Seúl, Corea</p>
+                    <p class="rev-stamp mt-10">Rev. 01CC1CIRCOLO24 Emirate of RAK</p>
                 </div>
-                <div class="img-container shadow-sm border border-black/5">
+                <div class="img-container shadow-sm border border-black/5" style="max-height: 250px;">
                     <img src="https://imagenes.elpais.com/resizer/v2/PO7ERGE7F3KLH4UCNHLAUCHIN4.jpg?auth=85e69058752b02739a84333ee7c0b1317c79ed45218320aa2eef966d20bea71e&width=1960&height=1470&smart=true" alt="Seúl Skyline">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 2: Contexto -->
+    <!-- PÁGINA 2: Contexto -->
     <section id="contexto" class="bg-white">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
-            <h2 class="text-3xl font-light mb-12 border-b border-gold/20 pb-4 inline-block">CONTEXTO</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="space-y-6 text-slate-700 font-light text-lg">
+            <h2 class="text-2xl font-light mb-10 border-b border-gold/20 pb-3 inline-block">CONTEXTO</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="space-y-6 text-slate-700 font-light text-base leading-relaxed">
                     <p>Corea del Sur es uno de los mercados más avanzados de Asia en consumo premium, experiencia de marca y adopción de nuevas categorías.</p>
-                    <p>Con una población de aproximadamente 51 millones de personas, más del 80% concentrado en zonas urbanas, el país presenta un entorno altamente sofisticado para el desarrollo de marcas internacionales. Seúl, como capital, concentra gran parte del consumo, la influencia cultural y la adopción de tendencias.</p>
+                    <p>Con una población de aproximadamente 51 millones de personas, más del 80% concentrado en zonas urbanas, el país presenta un entorno altamente sofisticado para el desarrollo de marcas internacionales.</p>
                 </div>
-                <div class="bg-bone p-10 space-y-6 border-t border-gold">
-                    <h4 class="text-xs tracking-[0.2em] font-medium text-gold">EN TÉRMINOS DE CONSUMO:</h4>
-                    <ul class="text-sm space-y-4 font-light text-slate-600">
-                        <li>• Más del 75% de la población consume café de manera regular (38 a 40 millones de consumidores activos).</li>
+                <div class="bg-bone p-8 space-y-4 border-t border-gold">
+                    <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold uppercase">En términos de consumo:</h4>
+                    <ul class="text-xs space-y-3 font-light text-slate-600">
+                        <li>• Más del 75% consume café de manera regular (38-40M de consumidores).</li>
                         <li>• El consumo anual supera los 3.5 a 4 mil millones de tazas.</li>
                         <li>• Promedio de más de 350 tazas por persona al año.</li>
                         <li>• Corea supera en consumo per cápita a mercados como Japón y China.</li>
@@ -206,61 +210,61 @@
         </div>
     </section>
 
-    <!-- Sección 3: Categorías y Estrategia -->
+    <!-- PÁGINA 3: Perspectiva Estratégica -->
     <section class="bg-bone">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="space-y-10">
-                    <h4 class="text-xs tracking-[0.2em] font-medium text-gold">EN CATEGORÍAS COMPLEMENTARIAS:</h4>
-                    <ul class="text-base space-y-6 font-light text-slate-700">
-                        <li>• El mercado de specialty coffee ha crecido de forma consistente, impulsado por una base de consumidores informada que valora origen, proceso y calidad.</li>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold uppercase">Categorías Complementarias:</h4>
+                    <ul class="text-sm space-y-4 font-light text-slate-700">
+                        <li>• El mercado de specialty coffee ha crecido de forma consistente, impulsado por una base informada que valora origen y proceso.</li>
                         <li>• El segmento de chocolate premium ha evolucionado hacia productos de mayor calidad.</li>
-                        <li>• El mercado de bebidas funcionales, RTD tea y productos bajos en calorías mantiene crecimientos de doble dígito.</li>
+                        <li>• El mercado de bebidas funcionales y RTD tea mantiene crecimientos de doble dígito.</li>
                         <li>• Asia representa más del 35% del consumo global de bebidas funcionales.</li>
                     </ul>
                 </div>
-                <div class="space-y-10 border-l border-gold/10 pl-10">
-                    <h4 class="text-xs tracking-[0.2em] font-medium text-gold">PERSPECTIVA ESTRATÉGICA:</h4>
-                    <ul class="text-base space-y-6 font-light text-slate-700">
+                <div class="space-y-8 border-l border-gold/10 pl-10">
+                    <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold uppercase">Perspectiva Estratégica:</h4>
+                    <ul class="text-sm space-y-4 font-light text-slate-700">
                         <li>• Corea funciona como un mercado de referencia en Asia en términos de consumo, estética y experiencia.</li>
-                        <li>• Las marcas que logran posicionarse en Seúl tienden a ganar credibilidad en otros mercados asiáticos.</li>
-                        <li>• El consumidor coreano tiene alta exposición a marcas globales y desarrolla criterio rápidamente.</li>
+                        <li>• Posicionarse en Seúl genera credibilidad automática en mercados asiáticos adyacentes.</li>
+                        <li>• El consumidor coreano valida producto y narrativa en condiciones de alta exigencia.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 4: Ubicación Estratégica -->
+    <!-- PÁGINA 4: Ubicación -->
     <section id="ubicacion" class="bg-white">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
-            <h2 class="text-3xl font-light mb-12 border-b border-gold/20 pb-4 inline-block">UBICACIÓN ESTRATÉGICA</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
-                <div class="space-y-8 font-light text-slate-700">
-                    <p class="text-lg">El proyecto se desarrolla en Samseong-dong, Gangnam, uno de los distritos corporativos y comerciales más relevantes de Seúl.</p>
-                    <p>Gangnam concentra aproximadamente el 10% del PIB de la ciudad, y es una de las zonas con mayor densidad de empresas y consumo premium.</p>
-                    <div class="space-y-4 pt-6 border-t border-black/5 text-sm">
+            <h2 class="text-2xl font-light mb-10 border-b border-gold/20 pb-3 inline-block">UBICACIÓN ESTRATÉGICA</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="space-y-6 font-light text-slate-700 text-sm">
+                    <p class="text-base font-medium uppercase tracking-widest">Samseong-dong, Gangnam</p>
+                    <p>Distrito corporativo y comercial líder de Seúl. Gangnam concentra el 10% del PIB de la ciudad, con máxima densidad de empresas y consumo premium.</p>
+                    <div class="space-y-3 pt-4 border-t border-black/5">
                         <p>• COEX recibe más de 40 millones de visitantes al año.</p>
                         <p>• Proximidad a hoteles Grand InterContinental, Park Hyatt y Oakwood.</p>
-                        <p>• Sedes de compañías globales y centros de negocio.</p>
+                        <p>• Concentración de profesionales entre 25 y 45 años, poder adquisitivo alto.</p>
                     </div>
                 </div>
-                <div class="bg-bone p-12 flex flex-col justify-center border-l-2 border-gold">
-                    <h4 class="text-[10px] tracking-[0.3em] font-medium mb-10 text-slate-400">PUNTO DE ALTO VALOR PARA:</h4>
-                    <div class="space-y-8">
+                <div class="bg-bone p-10 flex flex-col justify-center border-l-2 border-gold">
+                    <h4 class="text-[9px] tracking-[0.3em] font-medium mb-8 text-slate-400">PUNTO DE ALTO VALOR PARA:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <p class="text-sm font-medium uppercase tracking-widest mb-1">Visibilidad</p>
-                            <p class="text-sm font-light opacity-70">Dentro de uno de los corredores comerciales más activos.</p>
+                            <p class="text-[11px] font-medium uppercase tracking-widest mb-1">Visibilidad</p>
+                            <p class="text-[10px] font-light opacity-70">Corredor comercial activo.</p>
                         </div>
                         <div>
-                            <p class="text-sm font-medium uppercase tracking-widest mb-1">Validación</p>
-                            <p class="text-sm font-light opacity-70">Exponer la propuesta a un consumidor exigente y con criterio.</p>
+                            <p class="text-[11px] font-medium uppercase tracking-widest mb-1">Validación</p>
+                            <p class="text-[10px] font-light opacity-70">Consumidor exigente.</p>
                         </div>
                         <div>
-                            <p class="text-sm font-medium uppercase tracking-widest mb-1">Interacción Estratégica</p>
-                            <p class="text-sm font-light opacity-70">Facilitar contacto con perfiles corporativos y potenciales aliados.</p>
+                            <p class="text-[11px] font-medium uppercase tracking-widest mb-1">Interacción</p>
+                            <p class="text-[10px] font-light opacity-70">Aliados potenciales.</p>
                         </div>
                     </div>
                 </div>
@@ -268,109 +272,105 @@
         </div>
     </section>
 
-    <!-- Sección 5: Objetivos Estratégicos -->
+    <!-- PÁGINA 5: Objetivos -->
     <section id="objetivos" class="bg-bone">
-        <div class="max-w-7xl mx-auto w-full">
+        <div class="max-w-7xl mx-auto w-full text-center">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo mx-auto">
-            <h2 class="text-3xl font-light mb-16 text-center">STRATEGIC OBJECTIVE</h2>
-            <div class="max-w-5xl mx-auto space-y-12">
-                <p class="text-xl font-light text-center leading-relaxed text-slate-800">El objetivo del proyecto es estructurar una plataforma que permita a las marcas avanzar de manera concreta en su proceso de internacionalización.</p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 pt-10 border-t border-gold/20 font-light text-slate-600">
-                    <ul class="space-y-6">
+            <h2 class="text-2xl font-light mb-12">STRATEGIC OBJECTIVE</h2>
+            <div class="max-w-4xl mx-auto space-y-10">
+                <p class="text-lg font-light border-b border-gold/20 pb-8 leading-relaxed">Estructurar una plataforma que permita a las marcas avanzar de manera concreta en su proceso de internacionalización.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 font-light text-xs text-left">
+                    <ul class="space-y-4">
                         <li>• Posicionar las marcas dentro de un entorno internacional alineado con estándares globales.</li>
                         <li>• Validar producto, narrativa y experiencia frente a un consumidor exigente y bien informado.</li>
-                        <li>• Generar interacción directa con distribuidores, importadores y operadores.</li>
                     </ul>
-                    <ul class="space-y-6">
-                        <li>• Facilitar el desarrollo de relaciones con potenciales partners en Corea y otros mercados de Asia.</li>
-                        <li>• Construir una base de aprendizaje útil para la toma de decisiones en expansión.</li>
+                    <ul class="space-y-4">
+                        <li>• Generar interacción directa con distribuidores e importadores del mercado.</li>
+                        <li>• Construir una base de aprendizaje útil para la expansión.</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 6: Tostao -->
-    <section id="tostao" class="bg-white">
+    <!-- PÁGINA 6: Tostao -->
+    <section id="tostao-section" class="bg-white">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1">
-                    <div class="img-container shadow-xl border border-black/5">
-                        <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828523b05df946ec4fda_image_2.webp" alt="Tostao Experience">
+                    <div class="img-container shadow-lg border border-black/5" style="max-height: 300px;">
+                        <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828523b05df946ec4fda_image_2.webp" alt="Tostao">
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 space-y-8">
-                    <h2 class="text-3xl font-light">TOSTAO COFFEE EXPERIENCE</h2>
-                    <div class="space-y-6 text-sm font-light">
+                <div class="order-1 lg:order-2 space-y-6">
+                    <h2 class="text-2xl font-light uppercase tracking-widest">TOSTAO COFFEE EXPERIENCE</h2>
+                    <div class="space-y-4 text-xs font-light">
                         <p><strong>Rol:</strong> Punto de entrada al recorrido. El café permite una conexión inmediata con el visitante y facilita la comprensión del origen colombiano.</p>
-                        <p><strong>Concepto:</strong> Experiencia de cata rápida diseñada para entender el café colombiano desde la práctica.</p>
-                        <div class="p-8 bg-bone border-l border-gold">
-                            <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold mb-3">ESTRUCTURA DEL ESPACIO:</h4>
-                            <p class="text-xs opacity-70 leading-relaxed">• Mesa central de degustación. Paredes con costales de café y narrativa de origen. Instalaciones con grano visible.</p>
+                        <div class="p-6 bg-bone border-l border-gold">
+                            <h4 class="text-[9px] tracking-[0.2em] font-medium text-gold mb-2 uppercase">Concepto:</h4>
+                            <p class="text-[10px] opacity-70 leading-relaxed">• Experiencia de cata rápida diseñada para entender el café colombiano desde la práctica (5 a 10 minutos).</p>
                         </div>
-                        <p class="text-[11px] font-medium tracking-[0.2em] text-gold uppercase">Rol Estratégico: Generar alto flujo e introducir al visitante.</p>
+                        <p class="text-[10px] font-medium tracking-[0.2em] text-gold uppercase">Estrategia: Generar alto flujo e introducir al visitante.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 7: Hatsu -->
-    <section id="hatsu" class="bg-bone">
+    <!-- PÁGINA 7: Hatsu -->
+    <section id="hatsu-section" class="bg-bone">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                <div class="space-y-8">
-                    <h2 class="text-3xl font-light">HATSU - FUNCTIONAL BEVERAGE</h2>
-                    <div class="space-y-6 text-sm font-light">
-                        <p><strong>Rol:</strong> Proyecta el consumo contemporáneo. Conecta con bienestar, estilo de vida y tendencias actuales.</p>
-                        <p><strong>Concepto:</strong> Flow State Drink the Balance. El equilibrio se comunica a través del movimiento, el líquido y el color.</p>
-                        <div class="p-8 bg-white border-l border-gold">
-                            <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold mb-3">ESTRUCTURA DEL ESPACIO:</h4>
-                            <p class="text-xs opacity-70 leading-relaxed">• Sistema de tubos con líquidos en circulación. Iluminación integrada. Interaction bar con degustación de portafolio.</p>
+                <div class="space-y-6">
+                    <h2 class="text-2xl font-light uppercase tracking-widest">HATSU - FUNCTIONAL BEVERAGE</h2>
+                    <div class="space-y-4 text-xs font-light">
+                        <p><strong>Rol:</strong> Proyecta el consumo contemporáneo. Conecta con bienestar, estilo de vida y tendencias actuales en un entorno fluido.</p>
+                        <div class="p-6 bg-white border-l border-gold">
+                            <h4 class="text-[9px] tracking-[0.2em] font-medium text-gold mb-2 uppercase">Concepto:</h4>
+                            <p class="text-[10px] opacity-70 leading-relaxed">• Flow State Drink the Balance. El equilibrio se comunica a través del movimiento, el líquido y el color.</p>
                         </div>
-                        <p class="text-[11px] font-medium tracking-[0.2em] text-gold uppercase">Rol Estratégico: Posicionar la marca en consumo consciente.</p>
+                        <p class="text-[10px] font-medium tracking-[0.2em] text-gold uppercase">Estrategia: Posicionar la marca en consumo consciente.</p>
                     </div>
                 </div>
-                <div class="img-container shadow-xl border border-black/5">
-                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e78281563d00c2ceb29623_image_1.webp" alt="Hatsu Experience">
+                <div class="img-container shadow-lg border border-black/5" style="max-height: 300px;">
+                    <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e78281563d00c2ceb29623_image_1.webp" alt="Hatsu">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 8: Lök -->
-    <section id="lok" class="bg-white">
+    <!-- PÁGINA 8: Lök -->
+    <section id="lok-section" class="bg-white">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="order-2 lg:order-1">
-                    <div class="img-container shadow-xl border border-black/5">
-                        <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828b79e429511b4ca782_image_3.webp" alt="Lök Experience">
+                    <div class="img-container shadow-lg border border-black/5" style="max-height: 300px;">
+                        <img src="https://cdn.prod.website-files.com/67ea12a6cb5c87586b4cbec0/69e7828b79e429511b4ca782_image_3.webp" alt="Lök">
                     </div>
                 </div>
-                <div class="order-1 lg:order-2 space-y-8">
-                    <h2 class="text-3xl font-light">LÖK CHOCOLATE EXPERIENCE</h2>
-                    <div class="space-y-6 text-sm font-light">
-                        <p><strong>Rol:</strong> Momento más emocional del recorrido. Donde la experiencia se vuelve sensorial y memorable.</p>
-                        <p><strong>Concepto:</strong> Experiencia inmersiva de cacao colombiano desde el origen hasta el producto final.</p>
-                        <div class="p-8 bg-bone border-l border-gold">
-                            <h4 class="text-[10px] tracking-[0.2em] font-medium text-gold mb-3">ESTRUCTURA DEL ESPACIO:</h4>
-                            <p class="text-xs opacity-70 leading-relaxed">• Instalación central (fuente de chocolate). Mesas de degustación guiada por porcentajes. Elementos de cacao natural.</p>
+                <div class="order-1 lg:order-2 space-y-6">
+                    <h2 class="text-2xl font-light uppercase tracking-widest">LÖK CHOCOLATE EXPERIENCE</h2>
+                    <div class="space-y-4 text-xs font-light">
+                        <p><strong>Rol:</strong> Momento más emocional del recorrido. Donde la experiencia se vuelve sensorial, memorable y de alta calidad.</p>
+                        <div class="p-6 bg-bone border-l border-gold">
+                            <h4 class="text-[9px] tracking-[0.2em] font-medium text-gold mb-2 uppercase">Concepto:</h4>
+                            <p class="text-[10px] opacity-70 leading-relaxed">• Experiencia inmersiva de cacao colombiano desde el origen hasta el producto final (Cata guiada).</p>
                         </div>
-                        <p class="text-[11px] font-medium tracking-[0.2em] text-gold uppercase">Rol Estratégico: Generar recordación y elevar percepción de marca.</p>
+                        <p class="text-[10px] font-medium tracking-[0.2em] text-gold uppercase">Estrategia: Generar recordación y elevar percepción de marca.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Sección 9: Inversión -->
+    <!-- PÁGINA 9: Inversión -->
     <section id="inversion" class="bg-white">
         <div class="max-w-7xl mx-auto w-full">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo mx-auto opacity-100">
-            <h2 class="text-3xl font-light mb-12 text-center">INVESTMENT OVERVIEW</h2>
+            <h2 class="text-2xl font-light mb-8 text-center uppercase tracking-widest">INVESTMENT OVERVIEW</h2>
             
             <div class="overflow-x-auto shadow-sm border border-black/5">
                 <table class="investment-table bg-white">
@@ -382,48 +382,48 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>Venue & Permisos</td><td>Renta espacio premium en Samseong-dong, utilidades, seguros y permisos base.</td><td style="text-align: right;">125,000 - 207,000</td></tr>
-                        <tr><td>Diseño & Dirección Creativa</td><td>Concepto general, narrativa, diseño espacial y desarrollo de experiencias.</td><td style="text-align: right;">35,000 - 55,000</td></tr>
-                        <tr><td>Construcción & Arquitectura</td><td>Montaje completo del espacio, acabados, carpintería, branding físico.</td><td style="text-align: right;">145,000 - 220,000</td></tr>
-                        <tr><td>Producción Técnica</td><td>Iluminación, sistemas especiales, integración técnica y equipos.</td><td style="text-align: right;">80,000 - 140,000</td></tr>
-                        <tr><td>Experiencias por Marca</td><td>Implementación de Tostao, Hatsu y Lök (equipamiento y setups).</td><td style="text-align: right;">78,000 - 135,000</td></tr>
-                        <tr><td>Logística & Operación</td><td>Envío internacional, aduanas, staff de atención (1 mes) y supervisión.</td><td style="text-align: right;">128,000 - 227,000</td></tr>
-                        <tr><td>Contenido & PR</td><td>Producción foto/video, activación con medios e invitados estratégicos.</td><td style="text-align: right;">30,000 - 55,000</td></tr>
-                        <tr><td>Gestión Circolo</td><td>Project management, ejecución y supervisión internacional.</td><td style="text-align: right;">45,000 - 70,000</td></tr>
-                        <tr class="total-row"><td colspan="2" style="text-align: right; text-transform: uppercase; letter-spacing: 1px;">TOTAL PROYECTO ESTIMADO (POP-UP 1 MES)</td><td style="text-align: right;">698,000 - 1,165,000</td></tr>
+                        <tr><td>Venue & Permisos</td><td>Renta espacio premium en Samseong-dong, seguros y adecuaciones.</td><td style="text-align: right;">125,000 - 207,000</td></tr>
+                        <tr><td>Diseño & Creatividad</td><td>Concepto general, narrativa espacial y desarrollo de experiencias.</td><td style="text-align: right;">35,000 - 55,000</td></tr>
+                        <tr><td>Construcción</td><td>Montaje completo del espacio, acabados y branding físico.</td><td style="text-align: right;">145,000 - 220,000</td></tr>
+                        <tr><td>Producción Técnica</td><td>Iluminación, sistemas especiales, integración y equipos.</td><td style="text-align: right;">80,000 - 140,000</td></tr>
+                        <tr><td>Experiencias Marcas</td><td>Implementación de Tostao, Hatsu y Lök (montaje y setups).</td><td style="text-align: right;">78,000 - 135,000</td></tr>
+                        <tr><td>Logística & Operación</td><td>Envío desde Colombia, aduanas, staff (1 mes) y supervisión.</td><td style="text-align: right;">128,000 - 227,000</td></tr>
+                        <tr><td>Contenido & PR</td><td>Producción foto/video, activación con medios e invitados.</td><td style="text-align: right;">30,000 - 55,000</td></tr>
+                        <tr><td>Gestión Circolo</td><td>Project management y supervisión internacional.</td><td style="text-align: right;">45,000 - 70,000</td></tr>
+                        <tr class="total-row"><td colspan="2" style="text-align: right; text-transform: uppercase;">TOTAL PROYECTO ESTIMADO (POP-UP 1 MES)</td><td style="text-align: right; font-weight: 500;">698,000 - 1,165,000</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- Sección 10: Conclusión -->
+    <!-- PÁGINA 10: Conclusión -->
     <section id="conclusion" class="bg-bone">
         <div class="max-w-7xl mx-auto w-full text-center">
             <img src="https://uploads.onecompiler.io/44apkjp8s/44apkn28k/Circolo%20Logo%20without%20life-09.png" alt="Circolo" class="section-logo mx-auto">
-            <h2 class="text-3xl font-light mb-16">CONCLUSIÓN</h2>
-            <div class="max-w-4xl mx-auto space-y-12">
-                <div class="space-y-8 text-lg font-light text-slate-700 leading-relaxed">
+            <h2 class="text-2xl font-light mb-12 uppercase tracking-widest">CONCLUSIÓN</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <div class="space-y-4 text-base font-light text-slate-700 leading-relaxed">
                     <p>Made in Colombia: House of Experiences se plantea como una plataforma de entrada estratégica al mercado asiático para Tostao, Hatsu y Lök.</p>
                     <p>Estar presentes en Seúl implica operar en uno de los entornos más exigentes del mundo en términos de experiencia, diseño y percepción de marca.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-xs font-medium tracking-widest text-slate-400 uppercase py-12 border-y border-gold/20">
-                    <p>Construcción de reputación internacional</p>
-                    <p>Validación real de mercado</p>
-                    <p>Generación de contenido relevante</p>
-                    <p>Activación de oportunidades de expansión</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-[9px] font-medium tracking-widest text-slate-400 uppercase py-8 border-y border-gold/20">
+                    <p>Reputación internacional</p>
+                    <p>Validación de mercado</p>
+                    <p>Contenido relevante</p>
+                    <p>Oportunidades expansión</p>
+                </div>
+
+                <div class="pt-8">
+                    <p class="text-sm font-light text-slate-600 mb-2 uppercase tracking-widest">Este proyecto no es una activación puntual.</p>
+                    <p class="text-sm font-medium text-dark uppercase tracking-widest leading-relaxed">Es un punto de partida para desarrollar presencia en Asia desde una ejecución alineada con estándares globales.</p>
                 </div>
 
                 <div class="pt-12">
-                    <p class="text-lg font-light text-slate-600 mb-2">Este proyecto no es una activación puntual.</p>
-                    <p class="text-lg font-bold text-dark uppercase tracking-widest">Es un punto de partida para desarrollar presencia en Asia desde una ejecución alineada con estándares globales.</p>
-                </div>
-
-                <div class="pt-20">
-                    <p class="text-[10px] uppercase tracking-[0.4em] font-medium text-gold mb-1">Curated by Circolo.</p>
-                    <p class="text-[9px] uppercase tracking-[0.4em] opacity-40">The culture layer for creating legacy experiences.</p>
-                    <p class="rev-stamp mt-12">Rev. 01CC1CIRCOLO24 Emirate of RAK</p>
+                    <p class="text-[9px] uppercase tracking-[0.4em] font-medium text-gold mb-1">Curated by Circolo.</p>
+                    <p class="text-[8px] uppercase tracking-[0.4em] opacity-40">The culture layer for creating legacy experiences.</p>
+                    <p class="rev-stamp mt-8">Rev. 01CC1CIRCOLO24 Emirate of RAK</p>
                 </div>
             </div>
         </div>
